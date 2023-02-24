@@ -50,7 +50,7 @@ The `package.json` file contains:
 
 __webpack.config.js__
 
-Webpack is a tool that combines multiple source files into one single file, including your dependencies. In other words, it makes scripts portable so you don't need users to have an entire `node_modules` folder in their KoLmafia scripts folder.
+Webpack is a tool that combines multiple source files into one single file, including your dependencies. In other words, it makes scripts portable so you don't need users to have an entire `node_modules` folder in their KoLmafia scripts folder. (That won't work anyway, you absolutely need to produce a single script file for KoLmafia to run it properly and not hang for minutes or hours trying to read the entire node_modules folder.)
 
 The `webpack.config.js` file contains data about what you want to files you want the build process to emit and how you want to build them. The entry object maps a list of filenames to produce to the corresponding typescript files. In other words, if you want to produce one script then you want one entry here. TS/JS do not support function overloading e.g. `function main()` and `function main(round, monster, page)` may not exist in the same file. Thus, if you want to have a consult script then you need to define another entry.
 
@@ -75,7 +75,7 @@ __eslintrc.json and .eslintignore__
 
 ESLint is a tool that [lints](https://en.wikipedia.org/wiki/Lint_\(software\)) code. In other words, it is another tool for catching errors before you run your script. Additionally, thanks to the [eslint-plugin-libram](https://github.com/Loathing-Associates-Scripting-Society/eslint-plugin-libram) project, it also provides error checking for KoLmafia constants. For example, if you type in ``$item`seal toof` `` you'll receive the error `Unrecognized enumerated value name "seal toof".eslint(libram/verify-constants)`. In addition, it can automatically correct unambiguous errors such as capitalization and incomplete names.
 
-The `eslintrc.json` file specifies rules beyond the default that you want to enable or disable. It lets you make linting strictor or looser as needed.
+The `eslintrc.json` file specifies rules beyond the default that you want to enable or disable. It lets you make linting stricter or looser as needed.
 
 The `.eslintignore` file specifies what kinds of files to skip linting. You definitely don't want to lint your hundreds or thousands of third-party dependencies, for example.
 
